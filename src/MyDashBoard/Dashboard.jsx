@@ -1,16 +1,16 @@
 import React from "react";
 import './Dashboard.css';
 
-const Dashboard  = () => {
+const Dashboard = () => {
 
     return (
         <div className="dashboard-container">
             <header className="dashboard-header">
-            <div className="profile-container">
-            <img src="C:\Users\Jerin\Downloads\portrait-smiling-handsome-male-doctor-man.jpg" alt="Profile Image" />
-            <h1 className="">Jerin L</h1>
-            </div>
-                
+                <div class="profile-container">
+                    <img src="path/to/your/profile.jpg" alt="Profile Picture" class="profile-picture" />
+                    <span class="profile-name">Jerin L</span>
+                </div>
+
                 <nav>
                     <ul>
                         <li><a href="#about">About</a></li>
@@ -24,16 +24,16 @@ const Dashboard  = () => {
                 <section id="about">
                     <h2>About Me</h2>
                     <p>Dedicated Software Engineer with over 2+ years of experience in developing and maintaining web applications. Expertise
-                    in Java, Spring Boot, and SQL, with a strong track record of delivering high-quality products on time. Demonstrated
-                    ability to work both independently and collaboratively within a team. Seeking a challenging role to leverage my skills
-                    and experience to make a significant impact</p>
+                        in Java, Spring Boot, and SQL, with a strong track record of delivering high-quality products on time. Demonstrated
+                        ability to work both independently and collaboratively within a team. Seeking a challenging role to leverage my skills
+                        and experience to make a significant impact</p>
                 </section>
                 <section id="projects">
                     <h2>My Projects</h2>
                     <div className="projects-list">
                         <div className="project-card">
                             <h3 >
-                            <a href="https://laulamaschools.com/aboutus#teamMembers" target="blanck" rel="noopener noreferrer">LaulamaSchools</a>
+                                <a href="https://laulamaschools.com/aboutus#teamMembers" target="blanck" rel="noopener noreferrer">LaulamaSchools</a>
                             </h3>
                             <p>Short description of the project.</p>
                         </div>
@@ -50,10 +50,10 @@ const Dashboard  = () => {
                         {/* Add more project cards as needed */}
                     </div>
                 </section>
-                <section id="contact">  
+                <section id="contact">
                     <h2>Contact Me</h2>
                     <p>
-                    Email: <a href="mailto:Jerinjack111@gmail.com">jerinjack111@gmail.com</a>
+                        Email: <a href="mailto:Jerinjack111@gmail.com">jerinjack111@gmail.com</a>
                     </p>
                 </section>
             </main>
