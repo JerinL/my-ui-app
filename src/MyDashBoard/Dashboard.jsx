@@ -2,41 +2,59 @@ import React from "react";
 import './Dashboard.css';
 
 const Dashboard  = () => {
-    console.log("Dashboard is being rendered");
+
     return (
         <div className="dashboard-container">
             <header className="dashboard-header">
-                <h1>Your Name</h1>
+            <div className="profile-container">
+            <img src="C:\Users\Jerin\Downloads\portrait-smiling-handsome-male-doctor-man.jpg" alt="Profile Image" />
+            <h1 className="">Jerin L</h1>
+            </div>
+                
                 <nav>
                     <ul>
                         <li><a href="#about">About</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="#Skills"> Skils</a></li>
                     </ul>
                 </nav>
             </header>
             <main className="dashboard-content">
                 <section id="about">
                     <h2>About Me</h2>
-                    <p>Brief introduction about yourself and your skills.</p>
+                    <p>Dedicated Software Engineer with over 2+ years of experience in developing and maintaining web applications. Expertise
+                    in Java, Spring Boot, and SQL, with a strong track record of delivering high-quality products on time. Demonstrated
+                    ability to work both independently and collaboratively within a team. Seeking a challenging role to leverage my skills
+                    and experience to make a significant impact</p>
                 </section>
                 <section id="projects">
                     <h2>My Projects</h2>
                     <div className="projects-list">
                         <div className="project-card">
-                            <h3>Project 1</h3>
+                            <h3 >
+                            <a href="https://laulamaschools.com/aboutus#teamMembers" target="blanck" rel="noopener noreferrer">LaulamaSchools</a>
+                            </h3>
                             <p>Short description of the project.</p>
                         </div>
                         <div className="project-card">
-                            <h3>Project 2</h3>
+                            <h3 >
+                                <a href="https://startup2launch.com/" target="blanck" rel="noopener noreferrer"> Startup2Launch</a>
+                            </h3>
+                            <p>Short description of the project.</p>
+                        </div>
+                        <div className="project-card">
+                            <h3>aryanow</h3>
                             <p>Short description of the project.</p>
                         </div>
                         {/* Add more project cards as needed */}
                     </div>
                 </section>
-                <section id="contact">
+                <section id="contact">  
                     <h2>Contact Me</h2>
-                    <p>Email: your.email@example.com</p>
+                    <p>
+                    Email: <a href="mailto:Jerinjack111@gmail.com">jerinjack111@gmail.com</a>
+                    </p>
                 </section>
             </main>
             <footer className="dashboard-footer">
