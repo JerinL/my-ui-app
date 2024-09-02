@@ -11,7 +11,7 @@ body {
 }
 
 .dashboard-header {
-    background-color: #333;
+    background-color: #ffffff;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -69,7 +69,7 @@ body {
 }
 
 .dashboard-footer {
-    background-color: #030202;
+    background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -91,4 +91,26 @@ body {
     width: 40%;
     order: 1;
     max-width: 50rem
+}
+
+.profile-container {
+    display: flex;
+    width: 200px;
+    align-items: center; /* Center the text vertically relative to the image */
+    padding: 10px; /* Adjust padding if necessary */
+    background-color: #ffffff; /* Set the background color to white */
+}
+
+.profile-picture {
+    width: 50px; /* Adjust the size of the profile picture */
+    height: 50px;
+    border-radius: 50%; /* Make the picture circular */
+    margin-right: 10px; /* Add space between the picture and the text */
+}
+
+.profile-name {
+    font-size: 18px; /* Adjust the font size as needed */
+    color: #333333; /* Set the text color */
+    font-weight: bold; /* Make the text bold */
+    text-align: left;
 }
