@@ -1,13 +1,11 @@
-import './App.css';
 import React from 'react';
 import Dashboard from './MyDashBoard/Dashboard';
 
 function App() {
   return(
-  <div className="App">
-  <Dashboard />
-  </div>
-  )
-}
+    <Dashboard/>
+  );
+
+};
 
 export default App;
