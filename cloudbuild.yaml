@@ -1,10 +1,13 @@
 steps:
+  # Step 1: Build the Docker image
   - name: "gcr.io/cloud-builders/docker"
     args: ["build", "-t", "gcr.io/future-synapse-429515-a1/react-app", "."]
- 
+  
+  # Step 2: Push the Docker image to Google Container Registry (GCR)
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/future-synapse-429515-a1/react-app"]
- 
+
+  # Step 3: Deploy the image to Google Cloud Run
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "gcloud"
     args:
@@ -18,9 +21,9 @@ steps:
       - "--region"
       - "us-central1"
       - "--allow-unauthenticated"
- 
+
 images:
   - "gcr.io/future-synapse-429515-a1/react-app"
- 
+
+# Optional: Specify a logs bucket to store build logs
 logs_bucket: gs://jerin-bucket-01/
- 
