@@ -1,9 +1,9 @@
 steps:
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/original-nomad-432415-q3/react-app", "."]
+    args: ["build", "-t", "gcr.io/future-synapse-429515-a1/react-app", "."]
  
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/original-nomad-432415-q3/react-app"]
+    args: ["push", "gcr.io/future-synapse-429515-a1/react-app"]
  
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
     entrypoint: "gcloud"
@@ -12,7 +12,7 @@ steps:
       - "deploy"
       - "react-app"
       - "--image"
-      - "gcr.io/original-nomad-432415-q3/react-app"
+      - "gcr.io/future-synapse-429515-a1/react-app"
       - "--platform"
       - "managed"
       - "--region"
@@ -20,7 +20,7 @@ steps:
       - "--allow-unauthenticated"
  
 images:
-  - "gcr.io/original-nomad-432415-q3/react-app"
+  - "gcr.io/future-synapse-429515-a1/react-app"
  
 logs_bucket: gs://jerin-bucket-01/
  
