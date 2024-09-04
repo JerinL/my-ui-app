@@ -22,5 +22,5 @@ steps:
 images:
   - "gcr.io/original-nomad-432415-q3/react-app"
  
-logs_bucket: gs://my-ui/
+logs_bucket: gs://jerin-bucket-01/
  
