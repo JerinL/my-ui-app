@@ -44,15 +44,39 @@
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
     width: 57px;
-    height: 52px;
-
+    height: 58px;
+    padding: 1px;
+    margin: 5px;
 }
 
 .main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgb(123, 123, 120);
     height: 89vh;
     background-image: url("../Assets/assets/cool-background.png");
 }
+
+.main-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.project-button{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    height: 50px;
+    width: 164px;
+    border-radius: 6px;
+    margin-top: 27px;
+    color: white;
+    align-items: center;
+}
+
 
 .footer{
     display: flex;
