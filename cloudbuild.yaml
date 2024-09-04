@@ -1,0 +1,26 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/original-nomad-432415-q3/react-app", "."]
+ 
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/original-nomad-432415-q3/react-app"]
+ 
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "react-app"
+      - "--image"
+      - "gcr.io/original-nomad-432415-q3/react-app"
+      - "--platform"
+      - "managed"
+      - "--region"
+      - "us-central1"
+      - "--allow-unauthenticated"
+ 
+images:
+  - "gcr.io/original-nomad-432415-q3/react-app"
+ 
+logs_bucket: gs://my-ui/
+ 

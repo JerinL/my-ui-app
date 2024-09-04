@@ -81,6 +81,12 @@ const Dashboard = () => {
           </p>
           <a className="project-button">PROJECTS</a>
         </div>
+        <div className="social-media-nav">
+          <div>I</div>
+          <div>L</div>
+          <div>W</div>
+          <div>G</div>
+        </div>
       </main>
       <footer className="footer">
         <a>Copyright &copy; {year.getFullYear()}</a>
