@@ -1,116 +1,72 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-.dashboard-container {
+.header{
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    background-color: rgb(0, 0, 0);
+    height: 75px;
+    color: white;
+    align-items: center;
+    justify-content: space-between;  
+    padding: 20px 80px;
+    font-size: 15px;
 }
 
-.dashboard-header {
-    background-color: #ffffff;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+/* .header-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;  
+    width: 85%;
+} */
+
+.nav-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+
 }
 
-.dashboard-header h1 {
-    margin: 0;
+.nav-items-item{
+    padding: 20px 10px;
+    color: white;
 }
 
-.dashboard-header nav ul {
-    list-style: none;
-    padding: 0;
+.nav-items-item:hover{
+    color: rgb(202, 43, 194);
+}
+
+.profile{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+}
+.profile-img{
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    width: 57px;
+    height: 52px;
+
 }
 
-.dashboard-header nav ul li {
-    margin: 0 15px;
+.main{
+    background-color: rgb(123, 123, 120);
+    height: 89vh;
+    background-image: url("../Assets/assets/cool-background.png");
 }
 
-.dashboard-header nav ul li a {
-    color: #fff;
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    background-color: black;
+    color: white;
+}
+
+*{
+    margin: 0;
+    list-style: none;
     text-decoration: none;
-    font-weight: bold;
+    /* padding: 0; */
 }
 
-.dashboard-header nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.dashboard-content {
-    flex: 1;
-    padding: 20px;
-}
-
-.dashboard-content section {
-    margin-bottom: 40px;
-}
-
-.projects-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically if the container has a height */
-}
-
-.project-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    width: calc(50% - 20px);
-}
-
-.dashboard-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    height: 250px;  
-    flex: 1;
-}
-
-.copy-right{
-    background-color: lightblue;
-    padding: 20px;
-    align-self:last baseline;
-}
-
-.footer-row-1{
-    order: 2
-}
-
-.footer-row-2{
-    width: 40%;
-    order: 1;
-    max-width: 50rem
-}
-
-.profile-container {
-    display: flex;
-    width: 200px;
-    align-items: center; /* Center the text vertically relative to the image */
-    padding: 10px; /* Adjust padding if necessary */
-    background-color: #ffffff; /* Set the background color to white */
-}
-
-.profile-picture {
-    width: 50px; /* Adjust the size of the profile picture */
-    height: 50px;
-    border-radius: 50%; /* Make the picture circular */
-    margin-right: 10px; /* Add space between the picture and the text */
-}
-
-.profile-name {
-    font-size: 18px; /* Adjust the font size as needed */
-    color: #333333; /* Set the text color */
-    font-weight: bold; /* Make the text bold */
-    text-align: left;
-}
