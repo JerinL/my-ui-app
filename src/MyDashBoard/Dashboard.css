@@ -29,6 +29,7 @@
 .nav-items-item{
     padding: 20px 10px;
     color: white;
+    cursor: pointer;
 }
 
 .nav-items-item:hover{
@@ -75,6 +76,7 @@
     margin-top: 27px;
     color: white;
     align-items: center;
+    cursor: pointer;
 }
 
 .social-media-nav{
@@ -89,9 +91,19 @@
     align-content: center;
     align-items: center;
     justify-content: space-around;
-    border-radius: 3px;
+    border-radius: 10px;
+}
+.social-media-nav-icon{
+    cursor: pointer;
+    height: 38px;
+    width: 38px;
+
 }
 
+.social-media-nav-icon img{
+    height: 100%;
+    width: 100%;
+}
 
 .footer{
     display: flex;
