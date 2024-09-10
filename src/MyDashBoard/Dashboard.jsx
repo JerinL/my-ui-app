@@ -14,8 +14,14 @@ import "@fontsource/open-sans";
 import "@fontsource/merriweather";
 import "@fontsource/source-code-pro";
 import "@fontsource/lora";
+import { FaTrashAlt } from "react-icons/fa";
+
+
+import { useState } from "react";
 
 const Dashboard = () => {
+
+  const [count,setCount]= useState(10);
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
     const num = Math.floor(Math.random() * dataArr.length);
@@ -45,6 +51,19 @@ const Dashboard = () => {
 
     return res;
   }
+
+
+  function increment(){
+    setCount((count) => {return count +1});
+    setCount((count) => {return count +1});
+    setCount((count) => {return count +1});
+    setCount((count) => {return count +1});
+    setCount((count) => {return count +1});
+  }
+
+  function degrement(){
+    setCount(count-1);
+  }
   const year = new Date();
 
   const handleClick = (e) => {
@@ -54,6 +73,38 @@ const Dashboard = () => {
   const handleClick2 = (name) => {
     console.log(`thank you ${name}`);
   };
+  const arrayInt = [1,2,3,4,5];
+  const mapA = arrayInt.filter(n => n>2).map(n=> ({numbers:n}));
+  console.log(mapA);
+
+const [user,setName] = useState(
+  [
+    {
+      id:1,
+      status:true,
+      name:"jerin"
+    },
+    {
+      id:2,
+      status:false,
+      name:"jerin"
+    },
+    {
+      id:3,
+      status:true,
+      name:"jack"
+    }
+  ]
+);
+
+// const name1 = setName 
+const handleCheck=(id)=>{
+  console.log(id)
+  const userList = user.map((user)=> user.id===id ? {...user,status:!user.status}:user); 
+  setName(userList);
+}
+
+
 
   return (
     <>
@@ -212,7 +263,7 @@ const Dashboard = () => {
         </div>
       </main>
       <section className="contact-form-container">
-        <h2 class="heading heading-sec">
+        <h2 class="heading-sec">
           <span class="heading-sec__main heading-sec__main--lt">Contact</span>
           <span class="heading-sec__sub heading-sec__sub--lt">
             Feel free to Contact me by submitting the form below and I will get
@@ -269,6 +320,25 @@ const Dashboard = () => {
             </form>
           </div>
         </div>
+      </section>
+      <section className="test">
+        <ul >
+          {user.map(users =>(
+            <li className="user">
+              <input
+              type="checkbox"
+              onChange={() =>handleCheck(users.id)}
+              checked ={users.status}/>
+              <label>{users.name}</label>
+              <FaTrashAlt 
+              role="button"
+              tabIndex="0"/>
+            </li>
+          ))}
+        </ul>
+        <button onClick={() =>increment()}>+</button>
+        <a>{count}</a>
+        <button onClick={degrement}>-</button>
       </section>
       <footer className="footer">
         <div className="upper-footer">
