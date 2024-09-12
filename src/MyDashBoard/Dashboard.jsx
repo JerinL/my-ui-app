@@ -16,12 +16,10 @@ import "@fontsource/source-code-pro";
 import "@fontsource/lora";
 import { FaTrashAlt } from "react-icons/fa";
 
-
 import { useState } from "react";
 
 const Dashboard = () => {
-
-  const [count,setCount]= useState(10);
+  const [count, setCount] = useState(10);
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
     const num = Math.floor(Math.random() * dataArr.length);
@@ -52,17 +50,26 @@ const Dashboard = () => {
     return res;
   }
 
-
-  function increment(){
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
+  function increment() {
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
   }
 
-  function degrement(){
-    setCount(count-1);
+  function degrement() {
+    setCount(count - 1);
   }
   const year = new Date();
 
@@ -73,44 +80,51 @@ const Dashboard = () => {
   const handleClick2 = (name) => {
     console.log(`thank you ${name}`);
   };
-  const arrayInt = [1,2,3,4,5];
-  const mapA = arrayInt.filter(n => n>2).map(n=> ({numbers:n}));
+  const arrayInt = [1, 2, 3, 4, 5];
+  const mapA = arrayInt.filter((n) => n > 2).map((n) => ({ numbers: n }));
   console.log(mapA);
 
-const [user,setName] = useState(
-  [
+  const [user, setName] = useState([
     {
-      id:1,
-      status:true,
-      name:"jerin"
+      id: 1,
+      status: true,
+      name: "jerin",
     },
     {
-      id:2,
-      status:false,
-      name:"jerin"
+      id: 2,
+      status: false,
+      name: "jerin",
     },
     {
-      id:3,
-      status:true,
-      name:"jack"
-    }
-  ]
-);
+      id: 3,
+      status: true,
+      name: "jack",
+    },
+  ]);
 
-// const name1 = setName 
-const handleCheck=(id)=>{
-  console.log(id)
-  const userList = user.map((user)=> user.id===id ? {...user,status:!user.status}:user); 
-  setName(userList);
-}
+  // const name1 = setName
+  const handleCheck = (id) => {
+    console.log(id);
+    const userList = user.map((user) =>
+      user.id === id ? { ...user, status: !user.status } : user
+    );
+    setName(userList);
+  };
 
+  const handleDelete = (id) => {
+    console.log(id);
+    // const userData = user.map((user) => 
+    //  user.id ==id ? {}:user);
 
+    const userData = user.filter((user)=> ( user.id !== id))
+    setName(userData);
+  };
 
   return (
     <>
       <header className="header">
         <div className="profile">
-          <img className="profile-img" src={profile_Image} />
+          <img className="profile-img" src={profile_Image}/>
           <h1>JERIN L</h1>
         </div>
         <nav>
@@ -322,21 +336,24 @@ const handleCheck=(id)=>{
         </div>
       </section>
       <section className="test">
-        <ul >
-          {user.map(users =>(
+        <ul>
+          {user.map((users) => (
             <li className="user">
               <input
-              type="checkbox"
-              onChange={() =>handleCheck(users.id)}
-              checked ={users.status}/>
+                type="checkbox"
+                onChange={() => handleCheck(users.id)}
+                checked={users.status}
+              />
               <label>{users.name}</label>
-              <FaTrashAlt 
-              role="button"
-              tabIndex="0"/>
+              <FaTrashAlt
+                role="button"
+                onClick={() => handleDelete(users.id)}
+                tabIndex="0"
+              />
             </li>
           ))}
         </ul>
-        <button onClick={() =>increment()}>+</button>
+        <button onClick={() => increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button>
       </section>
