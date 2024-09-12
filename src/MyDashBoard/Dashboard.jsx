@@ -105,6 +105,12 @@ const handleCheck=(id)=>{
 }
 
 
+const handleDelete = (id) =>{
+  console.log(id);
+  const userdata = user.filter(user => user.id !== id);
+  setName(userdata);
+}
+
 
   return (
     <>
@@ -322,6 +328,7 @@ const handleCheck=(id)=>{
         </div>
       </section>
       <section className="test">
+        {(user.length) ? (
         <ul >
           {user.map(users =>(
             <li className="user">
@@ -329,13 +336,16 @@ const handleCheck=(id)=>{
               type="checkbox"
               onChange={() =>handleCheck(users.id)}
               checked ={users.status}/>
-              <label>{users.name}</label>
+              <label
+              style={(users.status) ? {textDecoration:"line-through"}: null}
+              >{users.name}</label>
               <FaTrashAlt 
               role="button"
+              onClick={() =>handleDelete(users.id)}
               tabIndex="0"/>
             </li>
           ))}
-        </ul>
+        </ul>) : (<p style={{backgroundColor:"grey",borderRadius:"4px"}}>Your List Empty </p>)}
         <button onClick={() =>increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button>
