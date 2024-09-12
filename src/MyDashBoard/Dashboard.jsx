@@ -18,7 +18,7 @@ import { FaTrashAlt } from "react-icons/fa";
 
 import { useState } from "react";
 
-const Dashboard = () => {
+const Dashboard = ({user,handleAdd,handleCheck,handleDelete}) => {
   const [count, setCount] = useState(10);
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
@@ -83,48 +83,6 @@ const Dashboard = () => {
   const arrayInt = [1, 2, 3, 4, 5];
   const mapA = arrayInt.filter((n) => n > 2).map((n) => ({ numbers: n }));
   console.log(mapA);
-
-  const [user, setName] = useState([
-    {
-      id: 1,
-      status: true,
-      name: "jerin",
-    },
-    {
-      id: 2,
-      status: false,
-      name: "jerin",
-    },
-    {
-      id: 3,
-      status: true,
-      name: "jack",
-    },
-  ]);
-
-  // const name1 = setName
-  const handleCheck = (id) => {
-    console.log(id);
-    const userList = user.map((user) =>
-      user.id === id ? { ...user, status: !user.status } : user
-    );
-    setName(userList);
-  };
-
-  const handleDelete = (id) => {
-    console.log(id);
-    // const userData = user.map((user) => 
-    //  user.id ==id ? {}:user);
-
-    const userData = user.filter((user)=> ( user.id !== id))
-    setName(userData);
-
-  };
-
-  const handleAdd =(length)=> {
-    console.log(length);
-  }
-
   return (
     <>
       <header className="header">

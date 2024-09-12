@@ -23,9 +23,9 @@
 
 import React from 'react'
 
- const Footer = ({title}) => {
+ const Footer = ({title,user}) => {
   return (
-    <div>{title}</div>
+    <div>{title +user.length } {user.length ===1 ? "user":"users"}</div>
   )
 }
 
