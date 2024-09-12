@@ -23,10 +23,14 @@
 
 import React from 'react'
 
- const Footer = () => {
+ const Footer = ({title}) => {
   return (
-    <div>Footer</div>
+    <div>{title}</div>
   )
+}
+
+Footer.defaultProps={
+  title : "to do list"
 }
 
 export default Footer
