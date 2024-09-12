@@ -16,12 +16,10 @@ import "@fontsource/source-code-pro";
 import "@fontsource/lora";
 import { FaTrashAlt } from "react-icons/fa";
 
-
 import { useState } from "react";
 
 const Dashboard = () => {
-
-  const [count,setCount]= useState(10);
+  const [count, setCount] = useState(10);
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
     const num = Math.floor(Math.random() * dataArr.length);
@@ -52,17 +50,26 @@ const Dashboard = () => {
     return res;
   }
 
-
-  function increment(){
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
-    setCount((count) => {return count +1});
+  function increment() {
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
+    setCount((count) => {
+      return count + 1;
+    });
   }
 
-  function degrement(){
-    setCount(count-1);
+  function degrement() {
+    setCount(count - 1);
   }
   const year = new Date();
 
@@ -73,50 +80,56 @@ const Dashboard = () => {
   const handleClick2 = (name) => {
     console.log(`thank you ${name}`);
   };
-  const arrayInt = [1,2,3,4,5];
-  const mapA = arrayInt.filter(n => n>2).map(n=> ({numbers:n}));
+  const arrayInt = [1, 2, 3, 4, 5];
+  const mapA = arrayInt.filter((n) => n > 2).map((n) => ({ numbers: n }));
   console.log(mapA);
 
-const [user,setName] = useState(
-  [
+  const [user, setName] = useState([
     {
-      id:1,
-      status:true,
-      name:"jerin"
+      id: 1,
+      status: true,
+      name: "jerin",
     },
     {
-      id:2,
-      status:false,
-      name:"jerin"
+      id: 2,
+      status: false,
+      name: "jerin",
     },
     {
-      id:3,
-      status:true,
-      name:"jack"
-    }
-  ]
-);
+      id: 3,
+      status: true,
+      name: "jack",
+    },
+  ]);
 
-// const name1 = setName 
-const handleCheck=(id)=>{
-  console.log(id)
-  const userList = user.map((user)=> user.id===id ? {...user,status:!user.status}:user); 
-  setName(userList);
-}
+  // const name1 = setName
+  const handleCheck = (id) => {
+    console.log(id);
+    const userList = user.map((user) =>
+      user.id === id ? { ...user, status: !user.status } : user
+    );
+    setName(userList);
+  };
 
+  const handleDelete = (id) => {
+    console.log(id);
+    // const userData = user.map((user) => 
+    //  user.id ==id ? {}:user);
 
-const handleDelete = (id) =>{
-  console.log(id);
-  const userdata = user.filter(user => user.id !== id);
-  setName(userdata);
-}
+    const userData = user.filter((user)=> ( user.id !== id))
+    setName(userData);
 
+  };
+
+  const handleAdd =(length)=> {
+    console.log(length);
+  }
 
   return (
     <>
       <header className="header">
         <div className="profile">
-          <img className="profile-img" src={profile_Image} />
+          <img className="profile-img" src={profile_Image}/>
           <h1>JERIN L</h1>
         </div>
         <nav>
@@ -328,25 +341,26 @@ const handleDelete = (id) =>{
         </div>
       </section>
       <section className="test">
-        {(user.length) ? (
-        <ul >
-          {user.map(users =>(
+        {(user.length) ?(
+        <ul>
+          {user.map((users) => (
             <li className="user">
               <input
-              type="checkbox"
-              onChange={() =>handleCheck(users.id)}
-              checked ={users.status}/>
-              <label
-              style={(users.status) ? {textDecoration:"line-through"}: null}
-              >{users.name}</label>
+                type="checkbox"
+                onChange={() => handleCheck(users.id)}
+                checked={users.status}
+              />
+              <label onClick={()=> handleCheck(users.id)} style={(users.status)?{textDecoration:"line-through"}:null}>{users.name}</label>
               <FaTrashAlt 
-              role="button"
-              onClick={() =>handleDelete(users.id)}
-              tabIndex="0"/>
+                role="button"
+                onClick={() => handleDelete(users.id)}
+                tabIndex="0"
+              />
             </li>
           ))}
-        </ul>) : (<p style={{backgroundColor:"grey",borderRadius:"4px"}}>Your List Empty </p>)}
-        <button onClick={() =>increment()}>+</button>
+        </ul>) : (<p style={{backgroundColor:"grey",borderRadius:"5px"}}>your List Is Empty</p>)}
+        <button  onClick={()=> handleAdd(user.length)} style={{backgroundColor:"black",borderRadius:"5px",color:"white"}}>add</button>
+        <button onClick={() => increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button>
       </section>
