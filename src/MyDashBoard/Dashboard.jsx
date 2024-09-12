@@ -118,7 +118,12 @@ const Dashboard = () => {
 
     const userData = user.filter((user)=> ( user.id !== id))
     setName(userData);
+
   };
+
+  const handleAdd =(length)=> {
+    console.log(length);
+  }
 
   return (
     <>
@@ -336,6 +341,7 @@ const Dashboard = () => {
         </div>
       </section>
       <section className="test">
+        {(user.length) ?(
         <ul>
           {user.map((users) => (
             <li className="user">
@@ -344,15 +350,16 @@ const Dashboard = () => {
                 onChange={() => handleCheck(users.id)}
                 checked={users.status}
               />
-              <label>{users.name}</label>
-              <FaTrashAlt
+              <label onClick={()=> handleCheck(users.id)} style={(users.status)?{textDecoration:"line-through"}:null}>{users.name}</label>
+              <FaTrashAlt 
                 role="button"
                 onClick={() => handleDelete(users.id)}
                 tabIndex="0"
               />
             </li>
           ))}
-        </ul>
+        </ul>) : (<p style={{backgroundColor:"grey",borderRadius:"5px"}}>your List Is Empty</p>)}
+        <button  onClick={()=> handleAdd(user.length)} style={{backgroundColor:"black",borderRadius:"5px",color:"white"}}>add</button>
         <button onClick={() => increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button>
