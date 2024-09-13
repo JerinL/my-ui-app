@@ -5,23 +5,8 @@ import { useState } from "react";
 
 function App() {
 
-  const [user, setName] = useState([
-    {
-      id: 1,
-      status: true,
-      name: "jerin",
-    },
-    {
-      id: 2,
-      status: false,
-      name: "jerin",
-    },
-    {
-      id: 3,
-      status: true,
-      name: "jack",
-    },
-  ]);
+  const [user, setName] = useState(JSON.parse(localStorage.getItem("user")));
+
 
   // const name1 = setName
   const handleCheck = (id) => {
@@ -30,6 +15,7 @@ function App() {
       user.id === id ? { ...user, status: !user.status } : user
     );
     setName(userList);
+    localStorage.setItem("user",JSON.stringify(userList));
   };
 
   const handleDelete = (id) => {
@@ -39,6 +25,7 @@ function App() {
 
     const userData = user.filter((user)=> ( user.id !== id))
     setName(userData);
+    localStorage.setItem("user",JSON.stringify(userData));
 
   };
 
@@ -48,12 +35,13 @@ function App() {
   return (
     <div>
       <Dashboard 
-        user = {user}
+        user = {user} 
+        setName = {setName}
         handleCheck ={handleCheck}
         handleAdd = {handleAdd}
         handleDelete ={handleDelete}
         />
-      <Footer user = {user}/>
+      <Footer title ="JJJAA" user = {user}/>
     </div>
   );
 }

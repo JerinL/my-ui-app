@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./Dashboard.css";
 import profile_Image from "../Assets/assets/IMG_7963.jpg";
 import I_icon from "../Assets/assets/734395_instagram_media_online_photo_social_icon.png";
@@ -17,14 +17,20 @@ import "@fontsource/lora";
 import { FaTrashAlt } from "react-icons/fa";
 
 import { useState } from "react";
+import UserList from "../UserList";
+import AddItem from "../AddItem/AddItem";
 
-const Dashboard = ({user,handleAdd,handleCheck,handleDelete}) => {
+const Dashboard = ({user,setName,handleAdd,handleCheck,handleDelete}) => {
+  
+
+  console.log("uyfgfvugkvu",user)
   const [count, setCount] = useState(10);
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
     const num = Math.floor(Math.random() * dataArr.length);
     return dataArr[num];
   }
+
 
   function getcolor() {
     const color = ["White", "Light Gray", "Silver", "#00FFFF", "#EE82EE"];
@@ -83,6 +89,26 @@ const Dashboard = ({user,handleAdd,handleCheck,handleDelete}) => {
   const arrayInt = [1, 2, 3, 4, 5];
   const mapA = arrayInt.filter((n) => n > 2).map((n) => ({ numbers: n }));
   console.log(mapA);
+
+
+  const [newItem,setNewItem] = useState('');
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    addNewUser();
+    console.log(newItem);
+  }
+
+
+  const addNewUser = () => {
+    const newUser = {id:(user ? user.length+1 : 1),status:false,name:newItem};
+    // const addUser = [(user ? ...user :null),newUser];
+    const addUser = [...(user || []), newUser];
+    setName(addUser);
+    localStorage.setItem("user",JSON.stringify(addUser));
+
+  }
+
   return (
     <>
       <header className="header">
@@ -240,58 +266,58 @@ const Dashboard = ({user,handleAdd,handleCheck,handleDelete}) => {
         </div>
       </main>
       <section className="contact-form-container">
-        <h2 class="heading-sec">
-          <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-          <span class="heading-sec__sub heading-sec__sub--lt">
+        <h2 className="heading-sec">
+          <span className="heading-sec__main heading-sec__main--lt">Contact</span>
+          <span className="heading-sec__sub heading-sec__sub--lt">
             Feel free to Contact me by submitting the form below and I will get
             back to you as soon as possible
           </span>
         </h2>
-        <div class="contact-form">
-          <div class="contact__form-container">
-            <form action="#" class="contact__form" method="post">
+        <div className="contact-form">
+          <div className="contact__form-container">
+            <form action="#" className="contact__form" method="post">
               <input type="hidden" name="form-name" value="form 1" />
-              <div class="contact__form-field">
-                <label class="contact__form-label" for="name">
+              <div className="contact__form-field">
+                <label className="contact__form-label" for="name">
                   Name
                 </label>
                 <input
                   required
                   placeholder="Enter Your Name"
                   type="text"
-                  class="contact__form-input"
+                  className="contact__form-input"
                   name="name"
                   id="name"
                 />
               </div>
-              <div class="contact__form-field">
-                <label class="contact__form-label" for="email">
+              <div className="contact__form-field">
+                <label className="contact__form-label" for="email">
                   Email
                 </label>
                 <input
                   required
                   placeholder="Enter Your Email"
                   type="email"
-                  class="contact__form-input"
+                  className="contact__form-input"
                   name="email"
                   id="email"
                 />
               </div>
-              <div class="contact__form-field">
-                <label class="contact__form-label" for="message">
+              <div className="contact__form-field">
+                <label className="contact__form-label" for="message">
                   Message
                 </label>
                 <textarea
                   required
                   cols="30"
                   rows="10"
-                  class="contact__form-input"
+                  className="contact__form-input"
                   placeholder="Enter Your Message"
                   name="message"
                   id="message"
                 ></textarea>
               </div>
-              <button type="submit" class="btn btn--theme contact__btn">
+              <button type="submit" className="btn btn--theme contact__btn">
                 Submit
               </button>
             </form>
@@ -299,29 +325,24 @@ const Dashboard = ({user,handleAdd,handleCheck,handleDelete}) => {
         </div>
       </section>
       <section className="test">
-        {(user.length) ?(
-        <ul>
-          {user.map((users) => (
-            <li className="user">
-              <input
-                type="checkbox"
-                onChange={() => handleCheck(users.id)}
-                checked={users.status}
-              />
-              <label onClick={()=> handleCheck(users.id)} style={(users.status)?{textDecoration:"line-through"}:null}>{users.name}</label>
-              <FaTrashAlt 
-                role="button"
-                onClick={() => handleDelete(users.id)}
-                tabIndex="0"
-              />
-            </li>
-          ))}
-        </ul>) : (<p style={{backgroundColor:"grey",borderRadius:"5px"}}>your List Is Empty</p>)}
-        <button  onClick={()=> handleAdd(user.length)} style={{backgroundColor:"black",borderRadius:"5px",color:"white"}}>add</button>
+        <AddItem  
+        newItem = {newItem}
+        setNewItem={setNewItem}
+        handleSubmit ={handleSubmit}
+        addNewUser ={addNewUser}
+        />
+        {(user) ?(
+        <UserList 
+        user ={user}
+        handleAdd={handleAdd}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}/>
+        ) : (<p style={{backgroundColor:"grey",borderRadius:"5px"}}>your List Is Empty</p>)}
+        {/* <button  onClick={()=> handleAdd(user.length)} style={{backgroundColor:"black",borderRadius:"5px",color:"white"}}>add</button> */}
         <button onClick={() => increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button>
-      </section>
+      </section>̥
       <footer className="footer">
         <div className="upper-footer">
           <div className="upper-footer-content">

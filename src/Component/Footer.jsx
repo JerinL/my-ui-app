@@ -21,20 +21,32 @@
 //   )
 // }
 
-import React from 'react'
+import React from "react";
 
- const Footer = ({title,user}) => {
+const Footer = ({ title, user }) => {
+
+  console.log(!user)
   return (
-    <div>{title +user.length } {user.length ===1 ? "user":"users"}</div>
-  )
-}
+    <>
+      {user ? (
+        <>
+          <div>
+            {title + user?.length} {user.length === 1 ? "user" : "users"}
+          </div>
+        </>
+      ):(
+        <>
+        <div>
+          no data
+        </div>
+        </>
+      )}
+    </>
+  );
+};
 
-Footer.defaultProps={
-  title : "to do list"
-}
+// Footer.defaultProps={
+//   title : "to do list"
+// }
 
-export default Footer
-
-
-
-
+export default Footer;
