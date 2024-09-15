@@ -5,12 +5,15 @@ import { useState } from "react";
 
 function App() {
 
-  const [user, setName] = useState(JSON.parse(localStorage.getItem("user")));
+   const userData =localStorage.getItem("user")
+
+  //const [user, setName] = useState(JSON.parse(userData ? localStorage.setItem("user",[]) : userData));
+  
+  const [user, setName] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
 
   // const name1 = setName
   const handleCheck = (id) => {
-    console.log(id);
     const userList = user.map((user) =>
       user.id === id ? { ...user, status: !user.status } : user
     );
@@ -19,7 +22,6 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    console.log(id);
     // const userData = user.map((user) => 
     //  user.id ==id ? {}:user);
 
@@ -30,7 +32,6 @@ function App() {
   };
 
   const handleAdd =(length)=> {
-    console.log(length);
   }
   return (
     <div>

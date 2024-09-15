@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./AddItem.css";
 
 function AddItem({ newItem, setNewItem, handleSubmit }) {
+
+  const addRef = useRef(''); 
+
+  useEffect(() => {
+    console.log("loading initial");
+  },[]);
+
   return (
     <div>
-      <form className="add-form">
+      <form className="add-form"  onSubmit={(e)=>{handleSubmit(e)}}>
         <label htmlFor="addUser"> Add User</label>
         <input
-          autoFocus={false}
+          autoFocus
+          required
+          ref={addRef}
           id="adduser"
           type="text"
           placeholder="add Item"
-          required
           value={newItem}
           onChange={(e) => {
             setNewItem(e.target.value);
@@ -20,7 +28,8 @@ function AddItem({ newItem, setNewItem, handleSubmit }) {
         <button
           type="submit"
           aria-label="add User"
-          onClick={(e)=>{handleSubmit(e)}}
+          onClick={() => addRef.current.focus()}
+          
           // style={{fontSize:"40px",alignItems:"center"
           // }}
         >

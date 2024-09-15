@@ -15,22 +15,41 @@ import "@fontsource/merriweather";
 import "@fontsource/source-code-pro";
 import "@fontsource/lora";
 import { FaTrashAlt } from "react-icons/fa";
+import { useEffect } from "react";
 
 import { useState } from "react";
 import UserList from "../UserList";
 import AddItem from "../AddItem/AddItem";
+import SearchForm from "../SearchForm";
 
-const Dashboard = ({user,setName,handleAdd,handleCheck,handleDelete}) => {
-  
+const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
 
-  console.log("uyfgfvugkvu",user)
+  const [search,setSearch] = useState('');
   const [count, setCount] = useState(10);
+  const API_URL = "http://localhost:9000/users";
+
+
+
+  useEffect(() =>{
+    const fetchItems = async () =>{
+      try{
+        const response = await fetch(API_URL);
+        console.log(response)
+        const userList = await response.json();
+        console.log(userList);
+      } catch (err){
+        console.log(err.stack)
+      }
+    }
+
+    (async () => await fetchItems())()
+  },[])
+
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
     const num = Math.floor(Math.random() * dataArr.length);
     return dataArr[num];
   }
-
 
   function getcolor() {
     const color = ["White", "Light Gray", "Silver", "#00FFFF", "#EE82EE"];
@@ -56,6 +75,10 @@ const Dashboard = ({user,setName,handleAdd,handleCheck,handleDelete}) => {
     return res;
   }
 
+  useEffect(() => {
+    console.log("Rendering");
+  })
+
   function increment() {
     setCount((count) => {
       return count + 1;
@@ -80,40 +103,42 @@ const Dashboard = ({user,setName,handleAdd,handleCheck,handleDelete}) => {
   const year = new Date();
 
   const handleClick = (e) => {
-    console.log(e.target.innerText);
+   // console.log(e.target.innerText);
   };
 
   const handleClick2 = (name) => {
-    console.log(`thank you ${name}`);
+   // console.log(`thank you ${name}`);
   };
   const arrayInt = [1, 2, 3, 4, 5];
   const mapA = arrayInt.filter((n) => n > 2).map((n) => ({ numbers: n }));
-  console.log(mapA);
+  //console.log(mapA);
 
+  const [newItem, setNewItem] = useState("");
 
-  const [newItem,setNewItem] = useState('');
-
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     addNewUser();
-    console.log(newItem);
-  }
-
+    setNewItem('');
+   // console.log(newItem);
+  };
 
   const addNewUser = () => {
-    const newUser = {id:(user ? user.length+1 : 1),status:false,name:newItem};
+    const newUser = {
+      id: user ? user.length + 1 : 1,
+      status: false,
+      name: newItem,
+    };
     // const addUser = [(user ? ...user :null),newUser];
     const addUser = [...(user || []), newUser];
     setName(addUser);
-    localStorage.setItem("user",JSON.stringify(addUser));
-
-  }
+    localStorage.setItem("user", JSON.stringify(addUser));
+  };
 
   return (
     <>
       <header className="header">
         <div className="profile">
-          <img className="profile-img" src={profile_Image}/>
+          <img className="profile-img" src={profile_Image} />
           <h1>JERIN L</h1>
         </div>
         <nav>
@@ -267,7 +292,9 @@ const Dashboard = ({user,setName,handleAdd,handleCheck,handleDelete}) => {
       </main>
       <section className="contact-form-container">
         <h2 className="heading-sec">
-          <span className="heading-sec__main heading-sec__main--lt">Contact</span>
+          <span className="heading-sec__main heading-sec__main--lt">
+            Contact
+          </span>
           <span className="heading-sec__sub heading-sec__sub--lt">
             Feel free to Contact me by submitting the form below and I will get
             back to you as soon as possible
@@ -325,24 +352,40 @@ const Dashboard = ({user,setName,handleAdd,handleCheck,handleDelete}) => {
         </div>
       </section>
       <section className="test">
-        <AddItem  
-        newItem = {newItem}
-        setNewItem={setNewItem}
-        handleSubmit ={handleSubmit}
-        addNewUser ={addNewUser}
-        />
-        {(user) ?(
-        <UserList 
-        user ={user}
-        handleAdd={handleAdd}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}/>
-        ) : (<p style={{backgroundColor:"grey",borderRadius:"5px"}}>your List Is Empty</p>)}
+        <div className="form">
+          <SearchForm
+            setSearch = {setSearch}
+           />
+          <AddItem
+            newItem={newItem}
+            setNewItem={setNewItem}
+            handleSubmit={handleSubmit}
+            addNewUser={addNewUser}
+          />
+        </div>
+        {
+          <div className="user-list">
+            {(user?.length !==0 ) ? (
+              <UserList
+                search = {search}
+                user={user.filter(user => ((user.name).toLocaleLowerCase()).includes(search))}
+                handleAdd={handleAdd}
+                handleCheck={handleCheck}
+                handleDelete={handleDelete}
+              />
+            ) : (
+              <p className="default-data">
+                your List Is Empty
+              </p>
+            )}
+          </div>
+        }
         {/* <button  onClick={()=> handleAdd(user.length)} style={{backgroundColor:"black",borderRadius:"5px",color:"white"}}>add</button> */}
-        <button onClick={() => increment()}>+</button>
+        {/* <button onClick={() => increment()}>+</button>
         <a>{count}</a>
-        <button onClick={degrement}>-</button>
-      </section>̥
+        <button onClick={degrement}>-</button> */}
+      </section>
+      ̥
       <footer className="footer">
         <div className="upper-footer">
           <div className="upper-footer-content">

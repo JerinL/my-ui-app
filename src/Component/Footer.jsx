@@ -24,8 +24,6 @@
 import React from "react";
 
 const Footer = ({ title, user }) => {
-
-  console.log(!user)
   return (
     <>
       {user ? (

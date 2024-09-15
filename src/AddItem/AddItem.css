@@ -1,8 +1,7 @@
-
-.add-form{
-    display: flex;
-    flex-direction: column;
-    padding-left: 39px;
+.add-form {
+  display: flex;
+  flex-direction: row;
+  width: 167vh;
 }
 
 .add-form label {
@@ -11,7 +10,7 @@
 }
 .add-form input[type="text"] {
   flex-grow: 1;
-  max-width: calc(100% - · 50px);
+  width: 50vh;
   min-height: 48px;
   font-size: 1rem;
   padding: 0.25rem;
@@ -20,14 +19,23 @@
   outline: none;
 }
 
-
 .add-form button {
-    height: 48px;
-    min-width: 48px;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    background-color: aliceblue;
-    color: mediumblue;
-    cursor: pointer;
-  }
+  height: 58px;
+  min-width: 62px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: aliceblue;
+  color: mediumblue;
+  cursor: pointer;
+}
+
+.add-form button :focus, button:hover{
+  color: white;
+  background-color: limegreen;
+  outline: none;
+}
+
+*{
+  padding: 0;
+}
