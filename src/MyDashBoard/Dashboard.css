@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+.header1{
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .header {
   display: flex;
   background-color: rgb(0, 0, 0);
@@ -80,6 +86,13 @@
   color: white;
   align-items: center;
   cursor: pointer;
+}
+
+.button-container{
+  display: flex;
+  width: 55%;
+  align-content: center;
+  justify-content: space-around;
 }
 
 .project-button:hover {
@@ -221,6 +234,9 @@
   display: flex;
   flex-direction: column;
   width: 91%;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .add-form {

@@ -21,11 +21,13 @@ import { useState } from "react";
 import UserList from "../UserList";
 import AddItem from "../AddItem/AddItem";
 import SearchForm from "../SearchForm";
+import ProfileComponent from "../ProfileComponent";
 
 const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
 
   const [search,setSearch] = useState('');
   const [count, setCount] = useState(10);
+  const [userData,setUserData] =useState([]);
   const API_URL = "http://localhost:9000/users";
 
 
@@ -36,12 +38,12 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
         const response = await fetch(API_URL);
         console.log(response)
         const userList = await response.json();
-        console.log(userList);
+        console.log(userList)
+        setUserData(userList);
       } catch (err){
         console.log(err.stack)
       }
     }
-
     (async () => await fetchItems())()
   },[])
 
@@ -134,9 +136,19 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
     localStorage.setItem("user", JSON.stringify(addUser));
   };
 
+  const downloadResume = ()=>{
+    const link = document.createElement('a');
+    link.href  = "Jerin L(JavaDeveloper) (1).pdf"
+    link.download ="jerin(Software Developer).pdf"
+    document.body.append(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <>
-      <header className="header">
+    <div className="header1">
+    <header className="header">
         <div className="profile">
           <img className="profile-img" src={profile_Image} />
           <h1>JERIN L</h1>
@@ -169,6 +181,9 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
           </ul>
         </nav>
       </header>
+
+    </div>
+      
       <main className="main">
         <div className="main-content">
           <h1>HEY, I'M JERIN</h1>
@@ -183,7 +198,11 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
             Web <br />
             Applications that leads to the success of the overall product
           </p>
+          <div className="button-container">
           <a className="project-button">PROJECTS</a>
+          <a className="project-button" onClick={() => downloadResume()}>GET RESUME</a>
+          </div>
+          
         </div>
         <div className="social-media-nav">
           <a
@@ -384,6 +403,16 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
         {/* <button onClick={() => increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button> */}
+
+        {
+          userData && 
+          <ProfileComponent 
+        userData={userData}
+        setUserData ={setUserData}
+        />
+
+        }
+        
       </section>
       ̥
       <footer className="footer">
