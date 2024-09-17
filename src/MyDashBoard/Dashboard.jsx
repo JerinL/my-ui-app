@@ -28,24 +28,33 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
   const [search,setSearch] = useState('');
   const [count, setCount] = useState(10);
   const [userData,setUserData] =useState([]);
-  const API_URL = "http://localhost:9000/users";
-
+  const [error,setError] = useState('');
+  const API_URL = "http://localhost:8080/user";
 
 
   useEffect(() =>{
     const fetchItems = async () =>{
       try{
         const response = await fetch(API_URL);
+        if(!response.ok){
+          throw Error("Data Not Recived");
+        }
         console.log(response)
         const userList = await response.json();
         console.log(userList)
         setUserData(userList);
       } catch (err){
-        console.log(err.stack)
+        console.log(err)
+        await setError(err.message);
       }
     }
     (async () => await fetchItems())()
-  },[])
+  },[]);
+
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
+
 
   function getBrowserDetails() {
     const dataArr = ["JERIN", "JACK"];
@@ -403,7 +412,7 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
         {/* <button onClick={() => increment()}>+</button>
         <a>{count}</a>
         <button onClick={degrement}>-</button> */}
-
+        {error && <p style={{backgroundColor:"red"}}>{`Error : ${error}`}</p>}
         {
           userData && 
           <ProfileComponent 

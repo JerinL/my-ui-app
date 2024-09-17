@@ -1,7 +1,7 @@
 import React from "react";
 import Dashboard from "./MyDashBoard/Dashboard";
 import Footer from "./Component/Footer";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 
 function App() {
 
@@ -11,6 +11,10 @@ function App() {
   
   const [user, setName] = useState(JSON.parse(localStorage.getItem("user")) || []);
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // const name1 = setName
   const handleCheck = (id) => {

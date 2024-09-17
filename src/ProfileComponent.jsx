@@ -12,14 +12,13 @@ function ProfileComponent({ userData,setUserData }) {
     setUserData(updatedUsers);
   };
   return (
-    <div>
-      {userData?.map((user, index) => (
-        <div>
+    <div >
+      {userData && userData?.map((user, index) => (
+        <div key={index}>
           <label>UserName</label>
           <input
             value={user?.name}
             type="text"
-            key={index}
             onChange={(e) => handleInputChange(index, "name", e.target.value)}
           />
           <label>Age</label>
