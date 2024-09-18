@@ -2,6 +2,7 @@ import React from "react";
 import Dashboard from "./MyDashBoard/Dashboard";
 import Footer from "./Component/Footer";
 import { useEffect,useState } from "react";
+import Auth from "./Auth/Auth";
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
         handleDelete ={handleDelete}
         />
       <Footer title ="JJJAA" user = {user}/>
+      <Auth />
     </div>
   );
 }

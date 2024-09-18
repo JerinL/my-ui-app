@@ -22,6 +22,7 @@ import UserList from "../UserList";
 import AddItem from "../AddItem/AddItem";
 import SearchForm from "../SearchForm";
 import ProfileComponent from "../ProfileComponent";
+import { getAuth, signInWithCustomToken } from 'firebase/auth';
 
 const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
 
@@ -30,6 +31,33 @@ const Dashboard = ({ user, setName, handleAdd, handleCheck, handleDelete }) => {
   const [userData,setUserData] =useState([]);
   const [error,setError] = useState('');
   const API_URL = "http://localhost:8080/user";
+
+  const customToken ="eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImV4cCI6MTcyNjY0MTc2NywiaWF0IjoxNzI2NjM4MTY3LCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay0zcnA3eEBmdXR1cmUtc3luYXBzZS00Mjk1MTUtYTEuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay0zcnA3eEBmdXR1cmUtc3luYXBzZS00Mjk1MTUtYTEuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJ1aWQiOiJLNUQ1ME1tZVFkYW1tVnFUUjVjWENuNk54eXUxIn0.ay70SpHbUH-QYwPWnWAvdj1uJL5Q9ZDW8Rf8i6VcBtxIL8Fw4UazuuU7zICHfYhshFYqSufUS1aD5_79n8e--jA3ZJxTKi9PRmVMvsgrM5vq266cltORGC0vTiT0kgirevuZM3tOM5FKW440t0ykzRX38xw8wXxEZU_1feScPSge25PMzK3F5R78lRVDTey5c600J_f8h_MMhUCL-xODLep9F4FFXLceNZaO_XS3lSEM1Fxd9PhLRfka8f4319yQi5rBG6uG7mR1cyxL9l17uvL6u1wuFHXmxRYS6sfJFKQVSNj_9Ep609ehXFfZl2U8_lfLVwtxWQyG22N62cOBvw";
+
+
+  // useEffect(() =>{
+  //   console.log("FIREEEEBASEEE")
+  //   const signInWithCustomToken = async (customToken) => {
+  //     const auth = getAuth();
+      
+  //     try {
+  //       console.log("FIREEEEBASEEE")
+  //         // Sign in with the custom token
+  //         const userCredential = await signInWithCustomToken(auth, customToken);
+  
+  //         // Get the ID token
+  //         const idToken = await userCredential.user.getIdToken();
+  //         console.log('ID Token:', idToken);
+  
+  //         // Use the ID token for secure backend requests
+  //     } catch (error) {
+  //         console.error('Error during sign-in:', error);
+  //     }
+  // };
+  // signInWithCustomToken()
+  // })
+
+
 
 
   useEffect(() =>{
