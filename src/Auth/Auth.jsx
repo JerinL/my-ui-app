@@ -55,7 +55,7 @@ export default function Auth() {
 
   return (
     <div>
-      <button onClick={signInWithGoogleRedirect}>Sign In with Google (Redirect)</button>
+      <button onClick={signInWithGoogleRedirect}>Sign In with Google</button>
     </div>
   );
 }
